@@ -102,7 +102,7 @@ export function Hero() {
       >
         <div
           data-intro
-          className="aspect-square w-[min(84vw,64svh)] shrink-0 sm:w-[min(84vw,78svh)]"
+          className="aspect-square w-[min(118vw,80svh)] shrink-0 sm:w-[min(84vw,78svh)]"
         >
           <ul className="orbit relative size-full">
             {orbitIcons.map((icon, i) => {
@@ -156,7 +156,7 @@ export function Hero() {
         </div>
         <p
           data-intro
-          className="mt-6 max-w-[25.625rem] text-base text-grey-400 sm:text-lg"
+          className="mt-5 max-w-[18rem] text-base sm:mt-6 sm:max-w-[25.625rem] text-grey-400 sm:text-lg"
         >
           {profile.heroLine}
         </p>

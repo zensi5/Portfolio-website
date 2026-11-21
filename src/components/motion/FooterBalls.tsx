@@ -80,29 +80,31 @@ export function FooterBalls() {
       engine.gravity.y = 1.1;
       const world = engine.world;
 
-      // Walls, plus invisible blocks over the text so discs land on it and never cover links
+      // Walls, plus invisible blocks over the text so discs land on it and never cover links.
+      // On phones the play is free above the name: no lid and nothing on the links, just a floor
+      // across the card at the top of the name. Anything thrown upward arcs out of view and drops back.
       const rootRect = root.getBoundingClientRect();
       const solidEls = [...footer.querySelectorAll<HTMLElement>("[data-ball-solid]")];
-      const solid = solidEls.map((el) => {
-        const r = el.getBoundingClientRect();
-        return Bodies.rectangle(r.left - rootRect.left + r.width / 2, r.top - rootRect.top + r.height / 2, r.width, r.height, {
-          isStatic: true,
-        });
-      });
-      // On phones the links span the width, so play happens in the band below them
-      const ceiling = mobile
-        ? Math.max(
-            0,
-            ...solidEls
-              .filter((el) => el.dataset.ballSolid === "text")
-              .map((el) => el.getBoundingClientRect().bottom - rootRect.top + 4),
-          )
-        : 0;
+      const solid = mobile
+        ? (() => {
+            const top = Math.min(
+              ...solidEls.filter((el) => el.dataset.ballSolid === "word").map((el) => el.getBoundingClientRect().top),
+            );
+            const y = top - rootRect.top;
+            return [Bodies.rectangle(W / 2, y + thick / 2, W + thick * 2, thick, { isStatic: true })];
+          })()
+        : solidEls.map((el) => {
+            const r = el.getBoundingClientRect();
+            return Bodies.rectangle(r.left - rootRect.left + r.width / 2, r.top - rootRect.top + r.height / 2, r.width, r.height, {
+              isStatic: true,
+            });
+          });
       Composite.add(world, [
-        Bodies.rectangle(W / 2, ceiling - thick / 2, W + thick * 2, thick, { isStatic: true }),
+        ...(mobile ? [] : [Bodies.rectangle(W / 2, -thick / 2, W + thick * 2, thick, { isStatic: true })]),
         Bodies.rectangle(W / 2, H + thick / 2, W + thick * 2, thick, { isStatic: true }),
-        Bodies.rectangle(-thick / 2, H / 2, thick, H * 3, { isStatic: true }),
-        Bodies.rectangle(W + thick / 2, H / 2, thick, H * 3, { isStatic: true }),
+        // Tall side walls so a disc thrown high above the open top still comes back down inside
+        Bodies.rectangle(-thick / 2, -H * 4, thick, H * 10, { isStatic: true }),
+        Bodies.rectangle(W + thick / 2, -H * 4, thick, H * 10, { isStatic: true }),
         ...solid,
       ]);
 
@@ -115,7 +117,7 @@ export function FooterBalls() {
         el.style.fontSize = `${size * 0.26}px`;
         setTimeout(() => {
           if (cancelled) return;
-          const body = Bodies.circle(R + Math.random() * (W - size), ceiling + R + 2, R, {
+          const body = Bodies.circle(R + Math.random() * (W - size), R + 2, R, {
             restitution: 0.65,
             frictionAir: 0.002,
             friction: 0.05,

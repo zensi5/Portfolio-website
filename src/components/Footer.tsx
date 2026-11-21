@@ -64,10 +64,10 @@ export function Footer() {
   const links = [...profile.socials, { label: profile.email, href: `mailto:${profile.email}`, icon: "email" }];
 
   return (
-    <footer ref={ref} className="relative z-10 overflow-hidden px-3 pt-16 pb-3 md:px-6 md:pt-24 md:pb-6">
+    <footer ref={ref} className="relative z-10 overflow-hidden px-3 pt-16 pb-3 max-md:-mt-24 max-md:pt-40 md:px-6 md:pt-24 md:pb-6">
       <div className="footer-card relative rounded-[1.5rem] bg-white px-5 pt-10 md:px-10 md:pt-16">
-        {/* Drop zone starts above the card, in the beige gap */}
-        <div className="absolute inset-x-0 -top-16 bottom-0 md:-top-24">
+        {/* Drop zone starts above the card, in the beige gap (on phones the footer reaches up over the last section's bottom padding for more room) */}
+        <div className="absolute inset-x-0 -top-40 bottom-0 md:-top-24">
           <FooterBalls />
         </div>
         <div className="flex md:justify-end">
@@ -93,7 +93,7 @@ export function Footer() {
 
         <p
           aria-hidden="true"
-          className="footer-brand mt-14 pb-4 motion-safe:max-md:mt-40 text-[15vw] leading-[0.95] font-medium tracking-[-0.05em] whitespace-nowrap md:mt-20 md:pb-6 md:text-[16.5vw]"
+          className="footer-brand mt-14 pb-4 motion-safe:max-md:mt-36 text-[15vw] leading-[0.95] font-medium tracking-[-0.05em] whitespace-nowrap md:mt-20 md:pb-6 md:text-[16.5vw]"
         >
           <span data-ball-solid="word">{profile.firstName}</span> <span data-ball-solid="word">{profile.lastName}</span>
         </p>
