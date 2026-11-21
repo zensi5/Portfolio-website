@@ -1,7 +1,6 @@
 # Zensi Korat – Portfolio
 
 Next.js 16 + TypeScript + Tailwind CSS 4 + GSAP (ScrollTrigger, SplitText) + Lenis.
-A code port of the Webflow site at https://zensi-korat.webflow.io/, with its motion rebuilt in GSAP.
 
 ## Run it
 
@@ -15,12 +14,12 @@ npm run build && npm start   # production check
 
 All text lives in `src/data/`. You rarely need to touch components.
 
-| File | What it holds |
-| --- | --- |
-| `src/data/profile.ts` | Name, hero titles, About copy, CTA text, email, socials, quick facts. |
-| `src/data/projects.ts` | `projects` (anonymised: title, category, icon, summary, highlights, tech) and `otherWork` |
-| `src/data/experience.ts` | Jobs, certifications (with logos in `public/logos/`), education |
-| `src/data/skills.ts` | Skill groups, the 8 orbiting hero icons, marquee words |
+| File                     | What it holds                                                                             |
+| ------------------------ | ----------------------------------------------------------------------------------------- |
+| `src/data/profile.ts`    | Name, hero titles, About copy, CTA text, email, socials, quick facts.                     |
+| `src/data/projects.ts`   | `projects` (anonymised: title, category, icon, summary, highlights, tech) and `otherWork` |
+| `src/data/experience.ts` | Jobs, certifications (with logos in `public/logos/`), education                           |
+| `src/data/skills.ts`     | Skill groups, the 8 orbiting hero icons, marquee words                                    |
 
 - **Add a project:** add an entry to `projects.ts`; `icon` picks a line icon (see the map in `sections/Projects.tsx`).
 - **Update the resume:** replace `public/Zensi_Korat_Resume.pdf` (keep the name).
