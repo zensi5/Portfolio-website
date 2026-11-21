@@ -182,6 +182,7 @@ Density is generous and editorial. Sections breathe with tall vertical padding, 
 Motion is expo-out and soft long-tailed arrivals, scroll-scrubbed reveals and slow decorative loops. A Design/System switch lets the visitor flip the page into a blueprint of itself. Every animation has a reduced-motion path where the content is simply there, fully inked and in place.
 
 **Key Characteristics:**
+
 - Beige ground, black ink, a grey ladder for hierarchy; Signal orange for interaction and system feedback; full colour only in the gradient rule and the hover-revealed button balls.
 - A fixed 12-column grid (4 on mobile) drawn in near-invisible hairlines behind all content; System view turns it orange and numbers it.
 - BDO Grotesk at medium weight with tight negative tracking; Roboto Mono uppercase for section labels, metadata and the inspector.
@@ -194,23 +195,28 @@ Motion is expo-out and soft long-tailed arrivals, scroll-scrubbed reveals and sl
 A warm off-white and true black, one hot interaction accent, and a gradient signature rationed to thin marks.
 
 ### Primary
+
 - **Ink Black** (`ink`): All text, the dark button, selected chips, the fourth project-card ground, the nav glass pill at 55%, hairline dividers at 10-15% opacity. The voice of the page.
 
 ### Secondary
+
 - **Signal Orange** (`signal`): The interaction and system colour. Text selection (white on signal), the global focus ring (2px, 3px offset), the input caret, the custom cursor, the back-to-top progress ring, the "AA" in the Accessibility tile, the current-item dot on the Education timeline, the active System button, and every System-view overlay (grid lines at 35%, column numbers, inspector box, tags and dimension lines). Pointer spotlights inside tiles and cards glow in signal at 9% (20-22% on night grounds). It shares its hex with the gradient rule's first stop by design.
 
 ### Tertiary
+
 - **Signature Gradient Rule** (`rule-orange` to `rule-yellow` to `rule-sky` to `rule-blue`, as `linear-gradient(90deg, #ff4d00, #e7eb4c 31%, #0b90cb 68%, #0c59c1)`): The short bar before every section heading and the 3px list markers in Experience and in project "What I built" lists. Thin and small, never a fill.
 - **Night** (`night`): The near-black violet ground for the "I build" video window, the second project-card ground, the dark Accessibility tile and the dark certification card. The default dark surface.
 - **Button Balls** (red-yellow `#fd3846` to `#ffd000`; violet-green `#a600ff` to `#2bff00`): Blurred, overlay-blended gradients inside buttons, invisible at rest and fading in on hover or focus. Material, not palette: never text or fill elsewhere.
 
 ### Neutral
+
 - **Stage Beige** (`beige`): Page background, the mobile menu sheet, the scrolled-header fade, input fills, light-tile chip fills, the System switch at 90%.
 - **Sand** (`sand`): Third project-card ground and the bottom stop of the light button's vertical gradient (from `#f2f1ed`).
 - **Paper White** (`paper`): Raised objects: the first project-card ground, skill tiles (at 70%), certification, CTA, contact and footer cards, the back-to-top disc (at 90%).
 - **Grey ladder** (`grey-100` to `grey-600`): `grey-200` for dashed icon rings and oval tiles; `grey-300` for metadata, captions, mono labels, footer social labels; `grey-400` for supporting paragraphs; `grey-500` for intro and list body text; `grey-100` for dividers. Grid lines are ink at 5.5%.
 
 ### Named Rules
+
 **The Signal Answers Rule.** Signal orange marks only what responds to the visitor or exposes the system: focus, selection, cursor, progress, inspection, the single current-item marker. It is never a section background, a headline colour or decoration at rest.
 
 **The Rationed Colour Rule.** Beyond signal, colour appears only as the gradient rule and the hover-revealed balls. A new surface adds no new hue; it reaches for a grey step, a tonal ground, or the rule.
@@ -225,8 +231,9 @@ A warm off-white and true black, one hot interaction accent, and a gradient sign
 **Character:** A friendly geometric grotesk set at medium weight with tight tracking reads confident without shouting; the mono caps add a technical, annotated counter-voice that the System view extends into a live spec sheet.
 
 ### Hierarchy
+
 - **Display** (500, 2.5rem to 4.5rem, line-height 1, -0.03em): The rotating hero titles only.
-- **Headline** (500, 1.75rem to 3.5rem, 1.05, -0.02em): The "I build" side words and reveal line; the Accessibility tile's "WCAG 2.1 AA" at up to 3.25rem, -0.04em.
+- **Headline** (500, 1.75rem to 3.5rem, 1.05, -0.02em): The "I build" side words and reveal line; the Accessibility tile's "WCAG 2.2 AA" at up to 3.25rem, -0.04em.
 - **Card Title** (500, 2rem to 3rem, 1.02, -0.03em): Project card titles; certification names at 1.75rem to 2.5rem.
 - **Title** (500, 1.25rem to 2.75rem, -0.02em): Experience company names (to 2.75rem), skill tile titles, Education entries (the current one at 2.25rem), "Also built" heading.
 - **Lead** (500, 1.25rem to 1.5rem, 1.35, -0.02em): Section intro paragraphs in `grey-500`; About paragraphs scrub from grey to ink.
@@ -235,6 +242,7 @@ A warm off-white and true black, one hot interaction accent, and a gradient sign
 - **Giant Wordmark** (500, 15vw mobile / 16.5vw from md, 0.95, -0.05em): The footer name, edge to edge inside the footer card.
 
 ### Named Rules
+
 **The Medium Voice Rule.** Body and headings both sit at weight 500. Hierarchy comes from size and tracking, not weight; bold is reserved for the first name in the "ZensiKorat" wordmark (1.625rem, -0.03em).
 
 **The Mono Means Metadata Rule.** Roboto Mono uppercase labels name or count things (a section, a category, an index, a group). They never carry sentences.
@@ -256,6 +264,7 @@ Breakpoints are Tailwind defaults (sm 640px, md 768px, lg 1024px); md is the mai
 The stage is flat; objects on it are tonal. Depth comes from ground changes (paper, sand, night, ink cards on beige) and from motion (stacking, scale, clip, blur). Shadows exist only where something physically sits above something else: the stacked project cards, and chrome that floats over the page.
 
 ### Shadow Vocabulary
+
 - **Stack shadow** (`box-shadow: 0 24px 60px -30px rgb(0 0 0 / 0.35)`): Under project cards, so each reads as lying on the one before.
 - **Float shadow** (`box-shadow: 0 10px 30px -12px rgb(0 0 0 / 0.35)`; the System switch uses `-15px` at 0.3): Back-to-top disc and System switch, both with backdrop blur.
 - **Button inner glow** (`box-shadow: inset 0 0 7px #ffffff47`, hover `inset 0 0 7px #fff9`): A soft lit edge inside buttons.
@@ -264,6 +273,7 @@ The stage is flat; objects on it are tonal. Depth comes from ground changes (pap
 Glass appears twice: the header's nav pill (ink at 55%, medium backdrop blur) and the mobile menu toggle in the same material. The scrolled header adds a beige-to-transparent fade (7rem) behind the wordmark instead of a bar.
 
 ### Named Rules
+
 **The Flat Stage Rule.** Sections and in-flow blocks never float on drop shadows; separate them by tone. A shadow is earned only by stacking (project cards) or by floating over the page (chrome).
 
 ## Shapes
@@ -275,7 +285,9 @@ Icons always sit in a dashed frame: lucide line icons (1.5 stroke) in dashed cir
 ## Components
 
 ### Buttons (gradient-ball)
+
 Calm at rest, lit on contact: a rounded rectangle whose colour arrives only when you reach for it.
+
 - **Shape:** 1.5rem radius (1rem small), `overflow: clip`, isolated stacking.
 - **Dark:** Ink fill, white text, 1.25rem by 1.75rem padding (1.5rem by 2rem from md), 1rem / 500 type.
 - **Light:** Vertical gradient from `#f2f1ed` to sand, ink text. The primary human action ("Hire me", "Let's connect") and the header Contact button.
@@ -284,43 +296,54 @@ Calm at rest, lit on contact: a rounded rectangle whose colour arrives only when
 - **Hover / Focus:** Balls fade in over 0.7s and a second unblended copy glows to 60%; both fade out over 0.9s, all on the soft ease. Inner glow brightens. Active presses to 0.97. Under reduced motion the fade shortens to 0.2s and stays as feedback.
 
 ### Chips
+
 - **Tech chips (project cards):** Pill, 1px border tuned to the card ground, 1rem by 0.5rem padding, 0.875rem type.
 - **Skill chips:** Pill on beige (light tiles) or white 5% (dark tile), 0.95rem type. Hover inverts to ink (or to white on the dark tile).
 - **Topic chips (contact):** Pill, 1px border at 15% ink; selected fills ink with white text, backed by a visually hidden radio.
 
 ### Cards / Containers
+
 - **Project card (signature):** Anonymised, stacked and sticky. Grounds cycle white, night, sand, ink in order. 2rem radius (2.5rem from md), 1.5rem to 3.5rem padding, min 30rem tall from md. Left: dashed-circle lucide icon, mono category and "01 / 07" index, title, summary, tech chips. Right, past a hairline: a mono "What I built" heading and highlights marked by 3px gradient-rule dashes. As the next card arrives, the previous scales to 0.92 and dims to 85% brightness (scrubbed, md and up). Hovering shows the "Project" cursor label and a signal spotlight.
-- **Skill tile:** Paper at 70% with a 10% ink border, 1.75rem radius, 1.5rem to 2rem padding; header row of dashed-circle icon, title and a mono item count; chips pinned to the bottom. The Accessibility tile is night with a large "WCAG 2.1 AA" where "AA" is signal. The Frontend tile carries the tool logos in dashed oval tiles that bob 6px on a 4s offset loop.
+- **Skill tile:** Paper at 70% with a 10% ink border, 1.75rem radius, 1.5rem to 2rem padding; header row of dashed-circle icon, title and a mono item count; chips pinned to the bottom. The Accessibility tile is night with a large "WCAG 2.2 AA" where "AA" is signal. The Frontend tile carries the tool logos in dashed oval tiles that bob 6px on a 4s offset loop.
 - **Certification card:** Paper with 10% ink border, or night; 2rem radius, min 22rem to 26rem tall; logo top, status, name and issuer bottom. Reveals by clip from the bottom edge, then the logo and lines rise.
 - **CTA and contact cards:** Paper, 2rem radius (CTA 3rem from md), 2rem to 4rem padding. The CTA pairs with a tile holding a blurred looping video.
 - **Footer card:** Paper, 1.5rem radius, inset 0.75rem to 1.5rem from the viewport edge. Copyright and resume link bottom-left in `grey-300`; socials right-aligned, each a `grey-300` label with a black icon; the giant name below. The card rises 18% into place as the page runs out.
 
 ### Inputs / Fields
+
 - **Style:** Beige fill inside the white form card, 1px border at 15% ink, 0.75rem radius, 0.875rem by 1rem padding. Placeholder in `grey-300`; caret in signal.
 - **Focus:** Border goes full ink plus the global signal focus ring. Hover lifts the border to 40% ink.
 - **Error:** A soft red notice block (`#fdecea` ground, `#8a1c12` text) with a mailto fallback.
 
 ### Navigation
+
 - **Desktop:** Fixed and always visible. Wordmark left ("Zensi" bold, "Korat" regular). Links and a light small Contact button sit together inside a dark glass pill (ink at 55%, backdrop blur, 1.25rem radius). Links are white 0.875rem with the char roll: letters slide up and a duplicate row rolls in, 0.45s on the soft ease with a 22ms per-character delay, on hover and focus.
 - **Mobile:** A 3rem glass square (same material) holds a two-bar toggle that morphs to an X. The menu is a full beige sheet, links at 2.25rem with hairline dividers rising in at 50ms stagger; scroll locks, content behind goes inert, Escape closes and returns focus.
 
 ### Section Label
+
 A short gradient-rule bar (1.75rem to 3.5rem wide, 2px tall, pill-capped) beside a Roboto Mono uppercase h2. This is the section heading itself.
 
 ### Education Timeline
+
 A 1px ink-20% rule on a 9rem date rail draws itself downward as you scroll (scrubbed). Entries carry an 11px dot: signal for the current entry, beige with a 40% ink ring for the rest. Optional detail sits in a mono pill.
 
 ### Custom Cursor (signature)
+
 After Clapat's Jetton. On fine pointers the system cursor is hidden (fields keep the text cursor) and a 14px signal square follows the pointer with a 0.2 lerp (instant under reduced motion). Over links and buttons it grows to a 46px signal outline with an 8% fill; over `[data-cursor]` it grows to 92px and shows the attribute's text in 11px mono caps; over fields it fades out. Presses squeeze to 0.8. Sizes ease on the soft curve over 0.35s. In System view it becomes an outline. It also feeds the pointer position to spotlights underneath.
 
 ### Design / System Switch (signature)
+
 After moisez.com. A two-button segmented control (Design with an eye, System with a ruler) in 11px mono caps on beige glass, bottom-left, toggled by click or the S key; the choice persists. Offered only to fine pointers at md and up. System view turns the grid lines signal at 35%, drops in column numbers ("01" to "12", staggered 38ms), and turns hover into inspection: a dashed signal outline around the element, a tag reading font / size / line-height / tracking / weight / column span (or tag and W by H for media), signal dimension lines with W and H labels, and a dashed "Npx of space" measure to the next element below.
 
 ### Back to Top
+
 A 3.5rem white disc (90%, blur, float shadow) bottom-right with an up arrow. A 2px signal ring around it fills with scroll progress over an 8% ink track. Appears after 60% of a viewport; scrolls home via Lenis and moves focus to main. Hides on mobile while the footer name is in view.
 
 ### Motion Grammar (signature)
+
 Arrivals use expo-out (`cubic-bezier(0.16, 1, 0.3, 1)`); hover reveals, cursor, grid and inspector use the soft ease (`cubic-bezier(0.65, 0.05, 0, 1)`); scrubs are linear with 0.6 to 0.8s smoothing.
+
 - **Rotating hero titles:** Three lines share one grid cell, rising word by word, holding, lifting away on a repeating cycle. Screen readers get one static h1.
 - **Orbit and icon flips:** Tool logos in dashed oval tiles ring the title on a 100s rotation, each counter-rotating to stay upright, flipping in sequence on a 6s repeat.
 - **Hero entrance:** Orbit, title, line and actions settle from 95% scale and zero opacity, staggered.
@@ -333,6 +356,7 @@ Arrivals use expo-out (`cubic-bezier(0.16, 1, 0.3, 1)`); hover reveals, cursor, 
 - **Small loops:** Globe meridians flip on 2s; the availability dot pulses on 2s; Frontend logos bob on 4s.
 
 ### Reduced Motion
+
 Under `prefers-reduced-motion: reduce`, every GSAP timeline and scrub is skipped, Lenis is off, CSS animations and transitions collapse to near zero, the "I build" runway and side words are removed so the reveal line shows in a static framed window over the poster, loop videos stay on their posters, the cursor follows without lag, and the button colour fade keeps a short 0.2s as action feedback. Hero intro elements only start hidden when motion is allowed and JS has run, with a 4s safety that reveals them anyway.
 
 There is no global pause control: the owner removed it. Decorative loops run while on screen for visitors who have not asked for reduced motion.
@@ -340,6 +364,7 @@ There is no global pause control: the owner removed it. Decorative loops run whi
 ## Do's and Don'ts
 
 ### Do:
+
 - **Do** keep the stage beige and the text ink; reach for a grey step (never lighter than `grey-300`) for hierarchy.
 - **Do** use signal for every focus, selection, progress or inspection state, and for nothing at rest.
 - **Do** mark section headings with the gradient-rule bar plus a mono caps h2.
@@ -351,6 +376,7 @@ There is no global pause control: the owner removed it. Decorative loops run whi
 - **Do** keep split text accessible: animated copy is hidden from assistive tech and a whole-sentence equivalent carries the meaning.
 
 ### Don't:
+
 - **Don't** introduce new hues or fill large areas with the gradient or with signal.
 - **Don't** put drop shadows on in-flow sections or blocks; only stacked cards and floating chrome earn a shadow.
 - **Don't** square any corner other than the cursor.

@@ -4,7 +4,14 @@ export type Project = {
   title: string;
   category: string;
   /** lucide icon name, see components/sections/Projects.tsx */
-  icon: "villa" | "building" | "accessibility" | "live" | "bot" | "tennis" | "calendar";
+  icon:
+    | "villa"
+    | "building"
+    | "accessibility"
+    | "live"
+    | "bot"
+    | "tennis"
+    | "calendar";
   tech: string[];
   summary: string;
   highlights: string[];
@@ -19,7 +26,8 @@ export const projects: Project[] = [
     category: "SaaS platform",
     icon: "building",
     tech: ["React.js", "Next.js", "TypeScript"],
-    summary: "A platform to manage properties, units, and tenants across many organizations, each with its own roles and dashboards.",
+    summary:
+      "A platform to manage properties, units, and tenants across many organizations, each with its own roles and dashboards.",
     highlights: [
       "Role-based access control for Org Admin, Admin, and Tenant users",
       "Protected routes and role-specific dashboards",
@@ -33,7 +41,7 @@ export const projects: Project[] = [
     category: "Staff augmentation & employee management",
     icon: "accessibility",
     tech: ["ASP.NET", "Bootstrap", "WAI-ARIA"],
-    summary: "Brought a legacy enterprise application up to WCAG 2.1 AA.",
+    summary: "Brought a legacy enterprise application up to WCAG 2.2 AA.",
     highlights: [
       "Screen reader support (NVDA, JAWS) with semantic HTML, ARIA labels, roles, and live regions",
       "Full keyboard access: logical tab order, visible focus, skip links, modal focus management",
@@ -47,7 +55,8 @@ export const projects: Project[] = [
     category: "Social app",
     icon: "live",
     tech: ["React.js", "Styled Components", "Ant Design"],
-    summary: "A dating platform that connects people through live streams and social interaction.",
+    summary:
+      "A dating platform that connects people through live streams and social interaction.",
     highlights: [
       "Live streams, image and video posts, and friend requests",
       "Daily coin rewards and coin-based features",
@@ -60,7 +69,8 @@ export const projects: Project[] = [
     category: "AI product",
     icon: "bot",
     tech: ["Vue.js", "SCSS", "Ant Design"],
-    summary: "A real-time platform where fans chat with AI personas of their favourite creators.",
+    summary:
+      "A real-time platform where fans chat with AI personas of their favourite creators.",
     highlights: [
       "Real-time chat UI for creator personas",
       "Coin-based virtual gifting flows",
@@ -73,7 +83,8 @@ export const projects: Project[] = [
     category: "Luxury villa real estate website",
     icon: "villa",
     tech: ["React.js", "Next.js"],
-    summary: "A website for a boutique real estate brand in North Goa, built to rank and to convert.",
+    summary:
+      "A website for a boutique real estate brand in North Goa, built to rank and to convert.",
     highlights: [
       "Villa detail pages with Next.js dynamic routing",
       "Full SEO: meta tags, Open Graph, canonical URLs",
@@ -88,7 +99,8 @@ export const projects: Project[] = [
     category: "Sports & coaching",
     icon: "tennis",
     tech: ["Angular", "SCSS", "Material UI"],
-    summary: "Connects players with ATP/WTA and professional coaches for remote training.",
+    summary:
+      "Connects players with ATP/WTA and professional coaches for remote training.",
     highlights: [
       "1:1 virtual coaching sessions",
       "Stroke-analysis video uploads",
@@ -111,7 +123,12 @@ export const projects: Project[] = [
 ];
 
 /** Smaller pieces, listed in one line each. */
-export const otherWork: { title: string; tech: string; text: string; link?: string }[] = [
+export const otherWork: {
+  title: string;
+  tech: string;
+  text: string;
+  link?: string;
+}[] = [
   {
     title: "Architect's portfolio",
     tech: "Webflow",
@@ -124,5 +141,9 @@ export const otherWork: { title: string; tech: string; text: string; link?: stri
     text: "IT services website with multiple service pages built with WordPress plugins.",
     link: "https://appvalt.com/",
   },
-  { title: "Healthcare websites", tech: "Webflow", text: "Fast, responsive sites with clear navigation." },
+  {
+    title: "Healthcare websites",
+    tech: "Webflow",
+    text: "Fast, responsive sites with clear navigation.",
+  },
 ];

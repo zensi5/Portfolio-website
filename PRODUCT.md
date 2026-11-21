@@ -19,7 +19,7 @@ Personal portfolio for Zensi Korat, Front-End Developer at Simform Solutions (Ah
 
 ## Positioning
 
-A front-end developer who pairs expressive motion (GSAP, Framer Motion) with verified accessibility skill (WCAG 2.1 AA remediation, IAAP WAS certified) and AI-assisted delivery (Claude Certified Architect, Figma MCP, spec-driven development). Most motion-heavy portfolios are inaccessible; this one must not be.
+A front-end developer who pairs expressive motion (GSAP, Framer Motion) with verified accessibility skill (WCAG 2.2 AA remediation, IAAP WAS certified) and AI-assisted delivery (Claude Certified Architect, Figma MCP, spec-driven development). Most motion-heavy portfolios are inaccessible; this one must not be.
 
 ## Operating Context
 
@@ -61,4 +61,4 @@ A front-end developer who pairs expressive motion (GSAP, Framer Motion) with ver
 
 ## Accessibility & Inclusion
 
-WCAG 2.1 AA is the floor, given the owner's specialty. Keyboard access, visible focus, screen-reader-friendly split text (whole words announced, not letters), `prefers-reduced-motion` respected everywhere, and no information conveyed by motion alone. The owner chose to remove the visible pause-motion control; reduced-motion users still get a fully static page.
+WCAG 2.2 AA is the floor, given the owner's specialty. Keyboard access, visible focus, screen-reader-friendly split text (whole words announced, not letters), `prefers-reduced-motion` respected everywhere, and no information conveyed by motion alone. The owner chose to remove the visible pause-motion control; reduced-motion users still get a fully static page.

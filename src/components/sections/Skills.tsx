@@ -1,7 +1,16 @@
 "use client";
 
 import { useRef } from "react";
-import { Accessibility, Atom, Code2, FlaskConical, Layers, Palette, Sparkles, type LucideIcon } from "lucide-react";
+import {
+  Accessibility,
+  Atom,
+  Code2,
+  FlaskConical,
+  Layers,
+  Palette,
+  Sparkles,
+  type LucideIcon,
+} from "lucide-react";
 import { orbitIcons, skills, type SkillGroup } from "@/data/skills";
 import { gsap, ScrollTrigger, useGSAP, MOTION_OK } from "@/lib/gsap";
 import { SectionLabel } from "../ui/SectionLabel";
@@ -17,7 +26,15 @@ const icons: Record<SkillGroup["icon"], LucideIcon> = {
 };
 
 /** Bento spans in data order, sized to content: [3,3] / [4,2] / [2,2,2] on a six-column grid. */
-const spans = ["md:col-span-3", "md:col-span-3", "md:col-span-4", "md:col-span-2", "md:col-span-2", "md:col-span-2", "md:col-span-2"];
+const spans = [
+  "md:col-span-3",
+  "md:col-span-3",
+  "md:col-span-4",
+  "md:col-span-2",
+  "md:col-span-2",
+  "md:col-span-2",
+  "md:col-span-2",
+];
 
 export function Skills() {
   const ref = useRef<HTMLElement>(null);
@@ -31,7 +48,13 @@ export function Skills() {
           start: "top 88%",
           once: true,
           onEnter: (tiles) => {
-            gsap.to(tiles, { opacity: 1, y: 0, duration: 1.1, stagger: 0.12, ease: "expo.out" });
+            gsap.to(tiles, {
+              opacity: 1,
+              y: 0,
+              duration: 1.1,
+              stagger: 0.12,
+              ease: "expo.out",
+            });
             tiles.forEach((tile, i) =>
               gsap.from(tile.querySelectorAll(".skill-chip"), {
                 opacity: 0,
@@ -51,12 +74,18 @@ export function Skills() {
   );
 
   return (
-    <section ref={ref} id="skills" aria-labelledby="skills-heading" className="px-4 py-24 md:px-8 md:py-36">
+    <section
+      ref={ref}
+      id="skills"
+      aria-labelledby="skills-heading"
+      className="px-4 py-24 md:px-8 md:py-36"
+    >
       <div className="mx-auto max-w-[72rem]">
         <div className="mx-auto max-w-[64rem]">
           <SectionLabel id="skills-heading">Skills</SectionLabel>
           <p className="mt-10 max-w-[40rem] text-xl leading-[1.35] tracking-[-0.02em] text-grey-500 md:mt-14 md:text-2xl">
-            The tools and practices I reach for every day, from component architecture to screen reader testing.
+            The tools and practices I reach for every day, from component
+            architecture to screen reader testing.
           </p>
         </div>
 
@@ -68,7 +97,9 @@ export function Skills() {
               <article
                 key={group.title}
                 className={`skill-tile spotlight flex flex-col rounded-[1.75rem] border p-6 md:p-8 ${spans[i]} ${
-                  dark ? "border-transparent bg-night text-white [--spot-alpha:0.22]" : "border-ink/10 bg-white/70"
+                  dark
+                    ? "border-transparent bg-night text-white [--spot-alpha:0.22]"
+                    : "border-ink/10 bg-white/70"
                 }`}
               >
                 <div className="flex items-center gap-4">
@@ -76,15 +107,21 @@ export function Skills() {
                     <span
                       className={`grid size-11 place-items-center rounded-full border border-dashed ${dark ? "border-white/30" : "border-grey-200"}`}
                     >
-                      <Icon className="size-5" strokeWidth={1.5} aria-hidden="true" />
+                      <Icon
+                        className="size-5"
+                        strokeWidth={1.5}
+                        aria-hidden="true"
+                      />
                     </span>
-                    <h3 className="text-xl tracking-[-0.02em] md:text-2xl">{group.title}</h3>
+                    <h3 className="text-xl tracking-[-0.02em] md:text-2xl">
+                      {group.title}
+                    </h3>
                   </div>
                 </div>
 
                 {dark && (
                   <p className="mt-8 text-[2.5rem] leading-none tracking-[-0.04em] md:text-[3.25rem]">
-                    WCAG 2.1 <span className="text-signal">AA</span>
+                    WCAG 2.2 <span className="text-signal">AA</span>
                   </p>
                 )}
 
@@ -97,7 +134,13 @@ export function Skills() {
                         style={{ "--i": k } as React.CSSProperties}
                       >
                         {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img src={icon.src} alt="" width={40} height={40} className="size-7 lg:size-10" />
+                        <img
+                          src={icon.src}
+                          alt=""
+                          width={40}
+                          height={40}
+                          className="size-7 lg:size-10"
+                        />
                       </li>
                     ))}
                   </ul>

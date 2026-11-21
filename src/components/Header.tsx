@@ -17,7 +17,9 @@ const links = [
 
 export function Wordmark({ className = "" }: { className?: string }) {
   return (
-    <span className={`text-[1.625rem] leading-none tracking-[-0.03em] ${className}`}>
+    <span
+      className={`text-[1.625rem] leading-none tracking-[-0.03em] ${className}`}
+    >
       <span className="font-bold">{profile.firstName}</span>
       <span className="font-normal">{profile.lastName}</span>
     </span>
@@ -45,7 +47,10 @@ export function Header() {
     if (!open) return;
     window.__lenis?.stop();
     document.documentElement.style.overflow = "hidden";
-    const behind = [document.getElementById("main"), document.querySelector("footer")];
+    const behind = [
+      document.getElementById("main"),
+      document.querySelector("footer"),
+    ];
     behind.forEach((el) => el?.setAttribute("inert", ""));
     menuRef.current?.querySelector<HTMLElement>("a")?.focus();
     const onKey = (e: KeyboardEvent) => {
@@ -74,8 +79,15 @@ export function Header() {
           scrolled && !open ? "opacity-100" : "opacity-0"
         }`}
       />
-      <nav aria-label="Main" className="relative mx-auto flex h-(--header-h) max-w-[90rem] items-center justify-between px-4 md:px-12">
-        <Link href="/" className="relative z-10" aria-label={`${profile.name}, home`}>
+      <nav
+        aria-label="Main"
+        className="relative mx-auto flex h-(--header-h) max-w-[90rem] items-center justify-between px-4 md:px-12"
+      >
+        <Link
+          href="/"
+          className="relative z-10"
+          aria-label={`${profile.name}, home`}
+        >
           <Wordmark />
         </Link>
 
@@ -83,7 +95,10 @@ export function Header() {
           <ul className="flex items-center gap-6">
             {links.map((l) => (
               <li key={l.hash}>
-                <a href={href(l.hash)} className="roll-host block py-2 text-sm text-white">
+                <a
+                  href={href(l.hash)}
+                  className="roll-host block py-2 text-sm text-white"
+                >
                   <RollText text={l.label} />
                 </a>
               </li>
@@ -114,10 +129,19 @@ export function Header() {
         </button>
       </nav>
 
-      <div id="mobile-menu" ref={menuRef} hidden={!open} className="fixed inset-0 bg-beige px-4 pt-(--header-h) md:hidden">
+      <div
+        id="mobile-menu"
+        ref={menuRef}
+        hidden={!open}
+        className="fixed inset-0 bg-beige px-4 pt-(--header-h) md:hidden"
+      >
         <ul className="mt-6 flex flex-col">
           {[...links, { hash: "", label: "Contact" }].map((l, i) => (
-            <li key={l.label} className="mobile-link border-b border-ink/10" style={{ "--i": i } as React.CSSProperties}>
+            <li
+              key={l.label}
+              className="mobile-link border-b border-ink/10"
+              style={{ "--i": i } as React.CSSProperties}
+            >
               <a
                 href={l.hash ? href(l.hash) : "/contact"}
                 onClick={() => setOpen(false)}
@@ -129,7 +153,11 @@ export function Header() {
           ))}
         </ul>
         <div className="mt-10">
-          <Button href={profile.resume} download variant="light">
+          <Button
+            href={profile.resume}
+            download="Zensi_Korat_Resume.pdf"
+            variant="light"
+          >
             Download resume
           </Button>
         </div>

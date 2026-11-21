@@ -9,7 +9,7 @@ related_targets: ["src/app/contact/page.tsx"]
 
 Scope: `/` single-page portfolio plus `/contact`. Visitor mode: Experience (the work and the motion lead), with two persuade exits on every screen: download resume, get in touch.
 
-Audience/job: recruiters screening a front-end hire and freelance clients judging craft. Proof: seven shipped projects described in full technical detail (client names, links, and screenshots withheld at the owner's request), resume facts, CCA-F and IAAP WAS credentials. Constraints: WCAG 2.1 AA, reduced-motion parity, fast on mid-range phones, all content in `src/data/`.
+Audience/job: recruiters screening a front-end hire and freelance clients judging craft. Proof: seven shipped projects described in full technical detail (client names, links, and screenshots withheld at the owner's request), resume facts, CCA-F and IAAP WAS credentials. Constraints: WCAG 2.2 AA, reduced-motion parity, fast on mid-range phones, all content in `src/data/`.
 
 ## Direction contract
 
