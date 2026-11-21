@@ -1,0 +1,621 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-bdo), "Helvetica Neue", Arial, sans-serif;
+  --font-mono: var(--font-roboto-mono), ui-monospace, monospace;
+
+  --color-beige: #f8f7f3;
+  --color-sand: #dddbd1;
+  --color-ink: #000;
+  --color-grey-100: #ddd;
+  --color-grey-200: #b6b6b6;
+  --color-grey-300: #6b6b6b;
+  --color-grey-400: #474747;
+  --color-grey-500: #333;
+  --color-grey-600: #292929;
+  --color-grey-700: #171717;
+  --color-grey-800: #0f0f0f;
+  --color-grey-900: #0a0a0a;
+  --color-night: #1b1a1f;
+  --color-signal: #ff4d00;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  /* The soft, long-tailed curve used for reveals */
+  --ease-soft: cubic-bezier(0.65, 0.05, 0, 1);
+}
+
+:root {
+  /* Signature four-stop rule used under labels and list markers */
+  --gradient-rule: linear-gradient(90deg, #ff4d00, #e7eb4c 31%, #0b90cb 68%, #0c59c1);
+  --header-h: 5.5rem;
+  --grid-line: rgb(0 0 0 / 0.055);
+}
+
+html {
+  scroll-padding-top: var(--header-h);
+  background: var(--color-beige);
+  color-scheme: light;
+}
+
+body {
+  background: var(--color-beige);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-weight: 500;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* Browser surfaces carry the palette too */
+::selection {
+  background: var(--color-signal);
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-signal);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+input,
+textarea {
+  caret-color: var(--color-signal);
+}
+
+html {
+  scrollbar-color: var(--color-grey-300) var(--color-beige);
+  scrollbar-width: thin;
+}
+
+a {
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 1px;
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+/* ---------- Column grid behind the page ---------- */
+.page-grid {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+.page-grid__col {
+  border-left: 1px solid var(--grid-line);
+  transition: border-color 0.6s var(--ease-soft);
+}
+.page-grid__col:last-child {
+  border-right: 1px solid var(--grid-line);
+}
+.page-grid__num {
+  opacity: 0;
+  transform: translateY(-100%);
+  transition:
+    opacity 0.5s var(--ease-soft),
+    transform 0.5s var(--ease-soft);
+  transition-delay: calc(var(--i) * 38ms);
+}
+html[data-view="system"] {
+  --grid-line: rgb(255 77 0 / 0.35);
+}
+html[data-view="system"] .page-grid__num {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- Gradient-ball button (matches the Webflow original) ---------- */
+.btn {
+  position: relative;
+  display: inline-block;
+  overflow: clip;
+  isolation: isolate;
+  border-radius: 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+  background: var(--color-ink);
+  color: #fff;
+  transition: transform 0.3s var(--ease-out-expo);
+}
+.btn--light {
+  background: linear-gradient(#f2f1ed, var(--color-sand));
+  color: var(--color-ink);
+}
+.btn--small {
+  border-radius: 1rem;
+}
+.btn__inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.25rem 1.75rem;
+  border-radius: inherit;
+  overflow: hidden;
+  box-shadow: inset 0 0 7px #ffffff47;
+  transition: box-shadow 0.3s;
+}
+@media (min-width: 768px) {
+  .btn__inner {
+    padding: 1.5rem 2rem;
+  }
+}
+.btn--small .btn__inner {
+  padding: 1rem 1.5rem;
+  font-size: 0.875rem;
+}
+.btn:hover .btn__inner {
+  box-shadow: inset 0 0 7px #fff9;
+}
+.btn:active {
+  transform: scale(0.97);
+}
+.btn__text {
+  position: relative;
+  z-index: 5;
+}
+/* Colour only arrives on hover, and fades in slowly so it feels like light, not a switch */
+.btn__balls,
+.btn__glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.9s var(--ease-soft);
+}
+.btn:hover .btn__balls,
+.btn:focus-visible .btn__balls {
+  opacity: 1;
+  transition-duration: 0.7s;
+}
+.btn:hover .btn__glow,
+.btn:focus-visible .btn__glow {
+  opacity: 0.6;
+  transition-duration: 0.7s;
+}
+.btn__ball {
+  position: absolute;
+  bottom: 0;
+  width: 50%;
+  height: 50%;
+  border-radius: 50%;
+  filter: blur(20px);
+  mix-blend-mode: overlay;
+}
+.btn--small .btn__ball {
+  filter: blur(13px);
+}
+.btn__ball--1 {
+  left: 0;
+  background-color: #fd3846;
+  background-image: linear-gradient(to right, #fd3846, #ffd000);
+  animation: ball-1 12s linear infinite;
+}
+.btn__ball--2 {
+  left: 50%;
+  background-image: linear-gradient(78deg, #a600ff, #2bff00);
+  animation: ball-2 16s linear infinite;
+}
+.btn__glow .btn__ball {
+  mix-blend-mode: normal;
+}
+
+@keyframes ball-1 {
+  0% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(100%, 0) scale(1); }
+  50% { transform: translate(100%, -100%) scale(1.5); }
+  75% { transform: translate(0, -100%) scale(1.5); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+@keyframes ball-2 {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(-100%, 0); }
+  50% { transform: translate(-100%, -100%); }
+  75% { transform: translate(-100%, 0); }
+  100% { transform: translate(0, 0); }
+}
+
+/* ---------- Character roll on nav links ---------- */
+.roll {
+  position: relative;
+  display: inline-flex;
+  overflow: clip;
+  line-height: 1.2;
+}
+.roll__row {
+  display: inline-flex;
+}
+.roll__row--2 {
+  position: absolute;
+  top: 100%;
+  left: 0;
+}
+.roll__char {
+  display: inline-block;
+  white-space: pre;
+  transition: transform 0.45s var(--ease-soft);
+  transition-delay: calc(var(--i) * 22ms);
+}
+.roll-host:hover .roll__char,
+.roll-host:focus-visible .roll__char {
+  transform: translateY(-100%);
+}
+
+/* ---------- Marquee ---------- */
+.marquee__track {
+  animation: marquee 50s linear infinite;
+}
+.marquee:hover .marquee__track {
+  animation-play-state: paused;
+}
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+
+/* ---------- Hero orbit ---------- */
+.orbit {
+  animation: spin 100s linear infinite;
+}
+.orbit__item {
+  animation: spin 100s linear infinite reverse;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ---------- Globe ---------- */
+.globe__meridian {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: meridian 2s linear infinite;
+}
+.globe__meridian--2 {
+  animation-delay: -1s;
+}
+@keyframes meridian {
+  0% { transform: scaleX(1); }
+  50% { transform: scaleX(0); }
+  100% { transform: scaleX(-1); }
+}
+
+/* Availability dot */
+.pulse::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: inherit;
+  animation: pulse 2s var(--ease-out-expo) infinite;
+}
+@keyframes pulse {
+  from { transform: scale(1); opacity: 0.6; }
+  to { transform: scale(2.6); opacity: 0; }
+}
+
+/* Hero intro starts hidden only when motion is allowed and JS is running */
+html.motion-ok [data-intro] {
+  opacity: 0;
+}
+
+/* Mobile menu links rise in, staggered */
+#mobile-menu:not([hidden]) .mobile-link {
+  animation: rise 0.6s var(--ease-out-expo) both;
+  animation-delay: calc(var(--i) * 50ms + 80ms);
+}
+@keyframes rise {
+  from { opacity: 0; transform: translateY(1.5rem); }
+}
+
+/* ---------- "I build" scroll section ---------- */
+.build-side {
+  position: absolute;
+  z-index: 10;
+  display: none;
+  font-size: 1.5rem;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+@media (min-width: 768px) {
+  .build-side {
+    font-size: 3.5rem;
+  }
+}
+html.motion-ok .build {
+  height: 300svh;
+}
+html.motion-ok .build-side {
+  display: block;
+}
+html.motion-ok .build-window {
+  inset: 0;
+  border-radius: 0;
+}
+@media (max-width: 767px) {
+  html.motion-ok .build-right {
+    white-space: normal;
+    width: 6.5rem;
+  }
+}
+.build-note {
+  display: none;
+}
+html.motion-ok .build-note {
+  display: block;
+}
+html.motion-ok .build-static {
+  display: none;
+}
+
+/* ---------- Spotlight that follows the pointer inside a tile ---------- */
+.spotlight {
+  position: relative;
+  isolation: isolate;
+}
+.spotlight::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: radial-gradient(
+    22rem circle at var(--mx, 50%) var(--my, 50%),
+    rgb(255 77 0 / var(--spot-alpha, 0.09)),
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.5s var(--ease-soft);
+}
+.spotlight:hover::before {
+  opacity: 1;
+}
+
+/* ---------- Custom cursor ---------- */
+@media (hover: hover) and (pointer: fine) {
+  html.has-cursor,
+  html.has-cursor * {
+    cursor: none !important;
+  }
+  html.has-cursor input,
+  html.has-cursor textarea {
+    cursor: text !important;
+  }
+}
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  pointer-events: none;
+  display: grid;
+  place-items: center;
+  width: 14px;
+  height: 14px;
+  background: var(--color-signal);
+  border: 1.5px solid var(--color-signal);
+  color: #fff;
+  will-change: transform;
+  transition:
+    width 0.35s var(--ease-soft),
+    height 0.35s var(--ease-soft),
+    background-color 0.35s var(--ease-soft),
+    border-radius 0.35s var(--ease-soft),
+    opacity 0.25s;
+}
+.cursor[data-state="link"] {
+  width: 46px;
+  height: 46px;
+  background: rgb(255 77 0 / 0.08);
+}
+.cursor[data-state="label"] {
+  width: 56px;
+  height: 56px;
+}
+.cursor[data-state="text"] {
+  opacity: 0;
+}
+.cursor__label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  opacity: 0;
+  transform: scale(0.6);
+  transition:
+    opacity 0.25s,
+    transform 0.35s var(--ease-soft);
+}
+.cursor[data-state="label"] .cursor__label {
+  opacity: 1;
+  transform: none;
+}
+html[data-view="system"] .cursor:not([data-state="label"]) {
+  background: transparent;
+}
+
+/* ---------- System view inspector ---------- */
+.sys-box {
+  position: fixed;
+  z-index: 90;
+  pointer-events: none;
+  outline: 1px dashed var(--color-signal);
+  outline-offset: 2px;
+  transition:
+    top 0.25s var(--ease-soft),
+    left 0.25s var(--ease-soft),
+    width 0.25s var(--ease-soft),
+    height 0.25s var(--ease-soft),
+    opacity 0.2s;
+}
+.sys-tag {
+  position: absolute;
+  left: -3px;
+  bottom: calc(100% + 6px);
+  padding: 3px 7px;
+  border: 1px solid var(--color-signal);
+  background: var(--color-beige);
+  color: var(--color-signal);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  line-height: 1.2;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.sys-dim {
+  position: absolute;
+  color: var(--color-signal);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.04em;
+}
+.sys-dim--w {
+  left: 0;
+  right: 0;
+  top: calc(100% + 8px);
+  height: 1px;
+  background: currentColor;
+}
+.sys-dim--h {
+  top: 0;
+  bottom: 0;
+  left: calc(100% + 8px);
+  width: 1px;
+  background: currentColor;
+}
+.sys-dim--gap {
+  left: 50%;
+  top: calc(100% + 2px);
+  width: 1px;
+  background: currentColor;
+  background-image: repeating-linear-gradient(currentColor 0 3px, transparent 3px 6px);
+  background-color: transparent;
+}
+.sys-dim--w::before,
+.sys-dim--w::after,
+.sys-dim--h::before,
+.sys-dim--h::after {
+  content: "";
+  position: absolute;
+  background: currentColor;
+}
+.sys-dim--w::before,
+.sys-dim--w::after {
+  top: -3px;
+  width: 1px;
+  height: 7px;
+}
+.sys-dim--w::after {
+  right: 0;
+}
+.sys-dim--h::before,
+.sys-dim--h::after {
+  left: -3px;
+  height: 1px;
+  width: 7px;
+}
+.sys-dim--h::after {
+  bottom: 0;
+}
+.sys-dim__label {
+  position: absolute;
+  padding: 1px 4px;
+  background: var(--color-signal);
+  color: #fff;
+  white-space: nowrap;
+}
+.sys-dim--w .sys-dim__label {
+  left: 50%;
+  top: 4px;
+  transform: translateX(-50%);
+}
+.sys-dim--h .sys-dim__label {
+  top: 50%;
+  left: 6px;
+  transform: translateY(-50%);
+}
+.sys-dim--gap .sys-dim__label {
+  top: 50%;
+  left: 6px;
+  transform: translateY(-50%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .btn__balls,
+  .btn__glow {
+    transition-duration: 0.2s !important;
+  }
+}
+
+/* Tool icons in the Skills tile bob gently, out of step with each other */
+.skill-float {
+  animation: bob 4s ease-in-out infinite;
+  animation-delay: calc(var(--i) * -0.5s);
+}
+@keyframes bob {
+  50% { transform: translateY(-6px); }
+}
+
+/* The Design/System switch steps aside while the footer name is on screen */
+.sys-switch {
+  transition:
+    opacity 0.5s var(--ease-soft),
+    transform 0.5s var(--ease-soft);
+}
+html.footer-in-view .sys-switch {
+  opacity: 0;
+  transform: translateY(1rem);
+  pointer-events: none;
+}
+@media (max-width: 767px) {
+  html.footer-in-view .back-to-top {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+/* While the hero is on screen the switch rides above its bottom bar */
+html.hero-in-view .sys-switch {
+  transform: translateY(-3.75rem);
+}
+/* Light buttons need the full glow: overlay blending washes out on sand */
+.btn--light .btn__ball {
+  mix-blend-mode: normal;
+}
+.btn--light:hover .btn__glow,
+.btn--light:focus-visible .btn__glow {
+  opacity: 1;
+}

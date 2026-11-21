@@ -1,0 +1,17 @@
+node_modules
+.next
+out
+.vercel
+*.tsbuildinfo
+next-env.d.ts
+.env*.local
+.DS_Store
+
+.env*
+!.env.example
+.impeccable/review/
+.impeccable/mocks/
+
+# Local tooling
+.claude/settings.local.json
+.impeccable/hook.cache.json
